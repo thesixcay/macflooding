@@ -161,3 +161,6 @@ exit
 ```
 
 ---
+
+<img width="569" height="237" alt="photo_2026-06-05_07-19-17" src="https://github.com/user-attachments/assets/7fa88174-25f1-4254-83d9-247b6a83bb42" />
+
